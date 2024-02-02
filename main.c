@@ -198,8 +198,9 @@ int main(void) {
 			userinput[len-1] = '\0';
 		}
 
-		printf("%s\n", extract_dst_from_json(get_json_data(cre_url(userinput))));
-		
+		char *url = cre_url(userinput);
+		printf("%s\n", extract_dst_from_json(get_json_data(url)));
+		free(url);	
 		
 		//\0的ascll码=0，所有循环条件不成立，不会执行循环
 		/*for (int i = 0; userinput[i] != '\0'; i++) {
