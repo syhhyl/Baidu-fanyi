@@ -1,7 +1,7 @@
 /*
 调用百度api翻译命令行软件
-1.操作逻辑 done
-2.构造url done
+1.操作逻辑
+2.构造url
 3.访问函数
 4.解析json数据
 */
@@ -11,7 +11,13 @@
 #include <stdlib.h>
 #include "mbedtls/md5.h"
 #include <curl/curl.h>
-#include "cJSON/cJSON.h"
+#include "cjson/cJSON.h"
+
+
+
+const char * appid = "20240129001953939";
+const char * secret_key = "ZjeHGmsmJqnsR6xlrBTK";
+
 
 
 
@@ -40,16 +46,16 @@ char *calculate_md5(const char *input) {
 	//printf("md5=%s\n", md5_result);
 	return md5_result;
 }
-char *cre_url(char userinput[200]) {
+char * cre_url(char userinput[200]) {
 	char url[1000] = "https://fanyi-api.baidu.com/api/trans/vip/translate?";
-	char *appid = "20240129001953939";
+	//char *appid = "20240129001953939";
 	char *q = userinput;
 	char *from = "en";
 	char *to = "zh";
 	char salt[60];
 	int a = rand();
 	sprintf(salt, "%d", a);
-	char *secret_key = "ZjeHGmsmJqnsR6xlrBTK";
+	//char *secret_key = "ZjeHGmsmJqnsR6xlrBTK";
 
 	char sign[120] = "";
 	strcat(sign, appid);
@@ -183,7 +189,7 @@ int main(void) {
 	char exitcode = 'q';
 	printf("start fanyi ~~\n");
 	while (1) {
-		printf("enter your content: ");
+		printf("enter your content(q quit): ");
 		fgets(userinput, sizeof(userinput), stdin);
 
 		if (userinput[0] == exitcode) {

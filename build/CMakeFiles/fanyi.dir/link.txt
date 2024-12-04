@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/fanyi.dir/main.c.o -o fanyi  -lcjson -lcurl -lmbedcrypto

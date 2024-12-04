@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.10)
+PROJECT(BaiduFanyi)
+SET(SRC_LIST main.c)
+MESSAGE(STATUS "This is BINARY dir" ${BaiduFanyi_BINARY_DIR})
+MESSAGE(STATUS "This is SOURCE dir" ${BaiduFanyi_SOURCE_DIR})
+ADD_EXECUTABLE(fanyi ${SRC_LIST})
+target_link_libraries(fanyi cjson curl mbedcrypto)
